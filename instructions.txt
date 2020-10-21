@@ -12,3 +12,45 @@ npm install redux@4.0.1
 npm install react-redux@7.0.3
 npm install --save-dev @types/react-redux
 npm install axios@0.19.0
+
+
+npm install react-router-dom@5.0.1
+npm install --save-dev @types/react-router-dom
+
+
+
+# deploying
+npm install --save-dev express@4.16.4
+# (useful when deploying applications that use URL routing because it maps 
+requests for the URLs that the application supports to the index.html file, 
+ensuring that reloading the browser doesn’t present the user with a “not
+found” error)
+npm install --save-dev connect-history-api-fallback@1.6.0
+data.json
+server.js
+httpHandler.ts
+npm run build
+node server.js => Starting the Production Server
+http://localhost:4002
+
+# docker
+deploy-package.json
+# (The contents of the Dockerfile use a base image that has been configured 
+with Node.js and that copies the files required to run the application into 
+the container, along with the file that lists the packages required for deployment.)
+Dockerfile
+.dockerignore
+docker build . -t react-typescript -f  Dockerfile
+
+(An image is a template for containers. As Docker processes the instructions 
+in the Docker file, the NPM packages will be downloaded and installed, 
+and the configuration and code files will be copied into the image.)
+
+# Starting the Docker Container
+docker run -p 4002:4002 react-typescript
+
+# Listing the Containers
+docker ps
+
+# Stopping the Container
+docker stop 1905eeee03d8
